@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تفعيل الفورجي - يمن موبايل</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+      text-align: center;
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark {
+      background: #121212;
+      color: #eee;
+    }
+    header {
+      background: #007bff;
+      color: white;
+      padding: 1em;
+      font-size: 1.5em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.2em;
+    }
+    .gear {
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+    .call-button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 1em 2em;
+      font-size: 1.3em;
+      border-radius: 10px;
+      margin: 1.5em auto;
+      display: block;
+      width: 80%;
+    }
+    .card {
+      background: white;
+      margin: 1em auto;
+      padding: 1em;
+      border-radius: 10px;
+      width: 90%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: right;
+    }
+    body.dark .card {
+      background: #1e1e1e;
+      box-shadow: none;
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #007bff;
+    }
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .card li {
+      margin: 0.5em 0;
+    }
+    footer {
+      display: flex;
+      justify-content: space-around;
+      background: #eee;
+      padding: 1em 0;
+      font-size: 0.9em;
+    }
+    body.dark footer {
+      background: #222;
+    }
+    .footer-btn {
+      cursor: pointer;
+      color: #007bff;
+    }
+    .settings-panel {
+      display: none;
+      position: fixed;
+      bottom: 70px;
+      right: 10px;
+      background: white;
+      padding: 1em;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+      text-align: right;
+    }
+    body.dark .settings-panel {
+      background: #1e1e1e;
+      color: #eee;
+    }
+    .settings-panel label {
+      display: block;
+      margin: 0.5em 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 id="title">تفعيل الفورجي</h1>
+    <div class="gear">⚙️</div>
+  </header>
+
+  <button class="call-button" onclick="callCode()">***444</button>
+
+  <div class="card">
+    <h2 id="apn1-title">نقاط الوصول يمن موبايل</h2>
+    <ul>
+      <li id="apn1-name">الاسم: ymdata</li>
+      <li id="apn1-apn">APN: ymdata</li>
+      <li id="apn1-user">اسم المستخدم: ymdata</li>
+      <li id="apn1-pass">كلمة المرور: ymdata</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 id="apn2-title">نقاط الوصول يو</h2>
+    <ul>
+      <li id="apn2-name">الاسم: YOU</li>
+      <li id="apn2-apn">APN: YOU-data</li>
+    </ul>
+  </div>
+
+  <footer>
+    <div class="footer-btn" onclick="toggleSettings()" id="settings-btn">الإعدادات</div>
+    <div class="footer-btn" onclick="openSupport()" id="support-btn">الدعم</div>
+  </footer>
+
+  <div class="settings-panel" id="settingsPanel">
+    <label>
+      <input type="checkbox" onchange="toggleDarkMode(this.checked)"> <span id="dark-label">الوضع الداكن</span>
+    </label>
+    <label>
+      <select onchange="changeLanguage(this.value)">
+        <option value="ar">العربية</option>
+        <option value="en">English</option>
+      </select>
+    </label>
+  </div>
+
+  <script>
+    function callCode() {
+      window.location.href = "tel:*444";
+    }
+
+    function toggleSettings() {
+      const panel = document.getElementById('settingsPanel');
+      panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleDarkMode(isDark) {
+      document.body.classList.toggle('dark', isDark);
+    }
+
+    function openSupport() {
+      window.location.href = "https://wa.me/qr/HW5TNO67J7VBA1";
+    }
+
+    function changeLanguage(lang) {
+      const texts = {
+        ar: {
+          title: "تفعيل الفورجي",
+          apn1: "نقاط الوصول يمن موبايل",
+          apn1_name: "الاسم: ymdata",
+          apn1_apn: "APN: ymdata",
+          apn1_user: "اسم المستخدم: ymdata",
+          apn1_pass: "كلمة المرور: ymdata",
+          apn2: "نقاط الوصول يو",
+          apn2_name: "الاسم: YOU",
+          apn2_apn: "APN: YOU-data",
+          settings: "الإعدادات",
+          support: "الدعم",
+          dark: "الوضع الداكن"
+        },
+        en: {
+          title: "Enable 4G",
+          apn1: "Yemen Mobile APN",
+          apn1_name: "Name: ymdata",
+          apn1_apn: "APN: ymdata",
+          apn1_user: "Username: ymdata",
+          apn1_pass: "Password: ymdata",
+          apn2: "YOU APN",
+          apn2_name: "Name: YOU",
+          apn2_apn: "APN: YOU-data",
+          settings: "Settings",
+          support: "Support",
+          dark: "Dark Mode"
+        }
+      };
+
+      const t = texts[lang];
+      document.getElementById("title").textContent = t.title;
+      document.getElementById("apn1-title").textContent = t.apn1;
+      document.getElementById("apn1-name").textContent = t.apn1_name;
+      document.getElementById("apn1-apn").textContent = t.apn1_apn;
+      document.getElementById("apn1-user").textContent = t.apn1_user;
+      document.getElementById("apn1-pass").textContent = t.apn1_pass;
+      document.getElementById("apn2-title").textContent = t.apn2;
+      document.getElementById("apn2-name").textContent = t.apn2_name;
+      document.getElementById("apn2-apn").textContent = t.apn2_apn;
+      document.getElementById("settings-btn").textContent = t.settings;
+      document.getElementById("support-btn").textContent = t.support;
+      document.getElementById("dark-label").textContent = t.dark;
+
+      document.body.setAttribute("lang", lang);
+      document.body.style.direction = lang === "ar" ? "rtl" : "ltr";
+      document.body.style.textAlign = lang === "ar" ? "right" : "left";
+    }
+  </script>
+
+</body>
+</html>
